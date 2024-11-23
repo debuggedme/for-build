@@ -43,8 +43,15 @@ jobs:
           username: ${{ inputs.username }}
           password: ${{ inputs.password }}
       -
+        if: ${{ inputs.context }}
         uses: docker/build-push-action@v6
         with:
           context: "{{defaultContext}}:${{ inputs.context }}"
+          push: true
+          tags: ${{ inputs.tags }}
+      -
+        if: ${{ !inputs.context }}
+        uses: docker/build-push-action@v6
+        with:
           push: true
           tags: ${{ inputs.tags }}
