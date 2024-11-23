@@ -20,7 +20,7 @@ on:
         required: true
       context:
         type: string
-        required: true
+        required: false
       tags:
         type: string
         required: true
